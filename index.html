@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <title>ToDo</title>
+</head>
+<body>
+  
+  <main>
+
+    <img src="hourglass.svg" alt="Hourglass" id="hourglass" />
+
+    <h1>Do some ToDos</h1>
+
+    <hr />
+
+    <div id="finished"></div>
+
+    <section>
+      <form onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Add a new ToDo" 
+          required /> 
+        <button type="submit" id="btn-todo"> </button>
+      </form>
+      <span id="message"></span>
+    </section>
+
+    <hr />
+
+    <select id="sort" onchange="sortList(event)">
+      <option>Sort by</option>
+      <option value="newest">Newest</option>
+      <option value="oldest">Oldest</option>
+      <option value="not-done">Not completed</option>
+    </select>
+
+    <hr />
+
+    <section>
+      <ul id="ul-todo">
+        <li>
+          <span>Example todo</span>
+          <button class="delete"></button>
+          </li>
+        <li>
+          <span>Example todo</span>
+          <button class="delete"></button>
+          </li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>
