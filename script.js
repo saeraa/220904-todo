@@ -12,7 +12,7 @@ const update = function() {
 const finishedNumber = function() {
   const num = todoList.filter(todo => todo.done === true)
   console.log(num)
-  document.getElementById("finished").textContent = `${num.length} tasks completed`
+  document.getElementById("finished").textContent = `${num.length} task${num.length === 1 ? "" : "s"} completed`
 }
 
 const addToLocalStorage = function() {
