@@ -216,6 +216,9 @@ li {
   transition: all .2s ease-in;
 }
 
+footer {
+  text-align: center;
+}
 
 .latestEntry {
   animation: newListItem .5s ease-out once;
