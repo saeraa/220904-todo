@@ -28,7 +28,7 @@
 
     <section>
       <form onsubmit="handleSubmit(event)">
-        <input type="text" placeholder="Add a new ToDo" required />
+        <input pattern="[a-zA-Z0-9\s]+" type="text" placeholder="Add a new ToDo" required />
         <button type="submit" id="btn-todo"> </button>
       </form>
       <span id="message"></span>
@@ -37,7 +37,7 @@
     <hr />
 
     <select id="sort" onchange="sortList(event)" onfocus="this.selectedIndex = 0">
-      <option>Sort by ...</option>
+      <option disabled>Sort by ...</option>
       <option value="newest">Newest</option>
       <option value="oldest">Oldest</option>
       <option value="not-done">Not completed</option>
