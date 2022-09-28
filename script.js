@@ -32,10 +32,10 @@ window.addEventListener("load", getFromLocalStorage)
 
 const sortList = function (event) {
   const { value } = event.target
-  if (value === "newest") {
+  if (value === "oldest") {
     todoList.sort((a, b) => a.time - b.time);
     update()
-  } else if (value === "oldest") {
+  } else if (value === "newest") {
     todoList.sort((a, b) => b.time - a.time);
     update()
   } else if (value === "not-done") {
