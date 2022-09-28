@@ -166,12 +166,12 @@ select {
   }
 }
 
-.done::after {
+.done::before {
   position: absolute;
-  transform: translateX(5px) translateY(5px);
+  transform: translateX(-25px) translateY(5px);
   content: url(./checkmark.svg);
-  width: 2rem;
-  height: 2rem;
+  width: .5rem;
+  height: .5rem;
   display: inline-block;
   z-index: 20000;
 }
@@ -216,8 +216,17 @@ li {
   transition: all .2s ease-in;
 }
 
+li span {
+  max-width: 30ch;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 30px;
+  white-space: nowrap;
+}
+
 footer {
   text-align: center;
+  padding-bottom: 2em;
 }
 
 .latestEntry {
