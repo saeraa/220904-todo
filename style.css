@@ -6,6 +6,30 @@
   font-size: 16px;
 }
 
+body {
+  animation: onLoad ease 2s;
+}
+
+@keyframes onLoad {
+  0% {
+    opacity: 0.5;
+    transform: translateY(-200%);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(10%);
+  }
+
+  55% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 img#hourglass {
   width: 80px;
   position: absolute;
@@ -18,27 +42,60 @@ img#hourglass {
 }
 
 @keyframes wiggle {
-  0% { transform: rotate(0deg) }
-  20% { transform: rotate(10deg) }
-  40% { transform: rotate(-10deg) }
-  60% { transform: rotate(10deg) }
-  80% { transform: rotate(-10deg) }
-  100% { transform: rotate(0deg) }
+  0% {
+    transform: rotate(0deg)
+  }
+
+  20% {
+    transform: rotate(10deg)
+  }
+
+  40% {
+    transform: rotate(-10deg)
+  }
+
+  60% {
+    transform: rotate(10deg)
+  }
+
+  80% {
+    transform: rotate(-10deg)
+  }
+
+  100% {
+    transform: rotate(0deg)
+  }
 }
 
 #message {
   color: red;
   margin-top: .5rem;
+  animation: blink .5s ease-in-out;
+  animation-iteration-count: 3;
 }
 
-form ~ span {
+@keyframes blink {
+  0% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
+form~span {
   text-align: center;
   width: 100%;
   display: none;
 }
 
 hr {
-  border:none;
+  border: none;
   border-top: 2px solid #ccc;
   margin: 1em 0em;
 }
@@ -73,7 +130,9 @@ form {
   right: .5em;
 }
 
-button[type="submit"], input, select {
+button[type="submit"],
+input,
+select {
   padding: .5em .7em;
   border-radius: 5px;
   background-color: #ccc;
@@ -94,7 +153,17 @@ select {
 
 .done {
   color: rgb(51, 141, 69);
+  animation: fadeIn .5s ease-in once;
+}
 
+@keyframes fadeIn {
+  from {
+    color: rgb(0, 0, 0);
+  }
+
+  to {
+    color: rgb(51, 141, 69);
+  }
 }
 
 .done::after {
@@ -145,6 +214,23 @@ li {
   list-style: none;
   border-radius: .2rem;
   transition: all .2s ease-in;
+}
+
+
+.latestEntry {
+  animation: newListItem .5s ease-out once;
+}
+
+@keyframes newListItem {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 li:hover {

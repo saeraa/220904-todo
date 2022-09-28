@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,8 +12,9 @@
   <script src="script.js" defer></script>
   <title>ToDo</title>
 </head>
+
 <body>
-  
+
   <main>
 
     <img src="hourglass.svg" alt="Hourglass" id="hourglass" />
@@ -25,8 +27,7 @@
 
     <section>
       <form onsubmit="handleSubmit(event)">
-        <input type="text" placeholder="Add a new ToDo" 
-          required /> 
+        <input type="text" placeholder="Add a new ToDo" required />
         <button type="submit" id="btn-todo"> </button>
       </form>
       <span id="message"></span>
@@ -34,7 +35,7 @@
 
     <hr />
 
-    <select id="sort" onchange="sortList(event)">
+    <select id="sort" onchange="sortList(event)" onfocus="this.selectedIndex = -1;">
       <option>Sort by</option>
       <option value="newest">Newest</option>
       <option value="oldest">Oldest</option>
@@ -48,15 +49,12 @@
         <li>
           <span>Example todo</span>
           <button class="delete"></button>
-          </li>
-        <li>
-          <span>Example todo</span>
-          <button class="delete"></button>
-          </li>
+        </li>
       </ul>
     </section>
 
   </main>
 
 </body>
+
 </html>

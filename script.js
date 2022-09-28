@@ -4,22 +4,23 @@ const btnEl = document.getElementById("btn-todo")
 const msgEl = document.getElementById("message")
 let todoList = []
 
-const update = function() {
+const update = function () {
   addToLocalStorage()
   populateList()
+  finishedNumber()
 }
 
-const finishedNumber = function() {
+const finishedNumber = function () {
   const num = todoList.filter(todo => todo.done === true)
   console.log(num)
   document.getElementById("finished").textContent = `${num.length} task${num.length === 1 ? "" : "s"} completed`
 }
 
-const addToLocalStorage = function() {
+const addToLocalStorage = function () {
   localStorage.setItem("todos", JSON.stringify(todoList))
 }
 
-const getFromLocalStorage = function() {
+const getFromLocalStorage = function () {
   const lsToDos = localStorage.getItem("todos")
   if (lsToDos) {
     todoList = JSON.parse(lsToDos)
@@ -30,7 +31,7 @@ const getFromLocalStorage = function() {
 
 window.addEventListener("load", getFromLocalStorage)
 
-const sortList = function(event) {
+const sortList = function (event) {
   const { value } = event.target
   if (value === "newest") {
     todoList.sort((a, b) => a.time - b.time);
@@ -48,7 +49,7 @@ const handleSubmit = function (event) {
   const text = event.target[0].value
   event.preventDefault()
 
-  if (text.length < 3) { 
+  if (text.length < 3) {
     msgEl.style.display = "inline-block"
     msgEl.textContent = "Your todo needs to be at least 3 characters long."
     return
@@ -61,7 +62,7 @@ const handleSubmit = function (event) {
   }
 }
 
-const markComplete = function(index) {
+const markComplete = function (index) {
   todoList[index].done = !todoList[index].done
 
   document.getElementById("hourglass").classList.toggle("wiggle")
@@ -73,17 +74,17 @@ const markComplete = function(index) {
   finishedNumber()
 }
 
-const deleteTodo = function(index) {
+const deleteTodo = function (index) {
   todoList.splice(index, 1)
   update()
 }
 
-const populateList = function() {
+const populateList = function () {
   listEl.innerHTML = ""
   let htmlString = ""
   todoList.forEach((todo, i) => {
     htmlString += `
-    <li>
+    <li class="${i === (todoList.length - 1) ? "latestEntry" : null}">
     <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${todo.todo}</span>
     <button onclick="deleteTodo(${i})" class="delete"></button>
     </li>
