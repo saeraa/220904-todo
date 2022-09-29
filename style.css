@@ -1,3 +1,8 @@
+/*  ----------------------------------------------------------------
+    ------------------------ GENERAL -------------------------------
+    ----------------------------------------------------------------
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +13,65 @@
 
 body {
   animation: onLoad ease 2s;
+}
+
+img#hourglass {
+  width: 80px;
+  position: absolute;
+  left: 5em;
+  z-index: -1;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #ccc;
+  margin: 1em 0em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  padding: .5em 1em;
+  text-align: center;
+}
+
+#message {
+  color: red;
+  margin-top: .5rem;
+  animation: blink .5s ease-in-out;
+  animation-iteration-count: 3;
+}
+
+main {
+  position: relative;
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  margin: 1rem auto;
+  background-color: rgba(204, 204, 204, 0.535);
+  padding: 1.5rem;
+  border-radius: .7rem;
+  border: 5px solid #fff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2), inset 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+#finished {
+  position: absolute;
+  bottom: 5px;
+  right: .5em;
+}
+
+footer {
+  text-align: center;
+  padding-bottom: 2em;
+}
+
+/*  ----------------------------------------------------------------
+    ------------------------ ANIMATIONS ----------------------------
+    ----------------------------------------------------------------
+*/
+
+.wiggle {
+  animation: wiggle 2s infinite;
 }
 
 @keyframes onLoad {
@@ -30,15 +94,30 @@ body {
   }
 }
 
-img#hourglass {
-  width: 80px;
-  position: absolute;
-  left: 5em;
-  z-index: -1;
+@keyframes blink {
+  0% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
 }
 
-.wiggle {
-  animation: wiggle 2s infinite;
+@keyframes newListItem {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 @keyframes wiggle {
@@ -67,43 +146,25 @@ img#hourglass {
   }
 }
 
-#message {
-  color: red;
-  margin-top: .5rem;
-  animation: blink .5s ease-in-out;
-  animation-iteration-count: 3;
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1
+@keyframes fadeIn {
+  from {
+    color: rgb(0, 0, 0);
   }
 
-  50% {
-    opacity: 0
-  }
-
-  100% {
-    opacity: 1
+  to {
+    color: rgb(51, 141, 69);
   }
 }
+
+/*  ----------------------------------------------------------------
+    --------------------------- FORM -------------------------------
+    ----------------------------------------------------------------
+*/
 
 form~span {
   text-align: center;
   width: 100%;
   display: none;
-}
-
-hr {
-  border: none;
-  border-top: 2px solid #ccc;
-  margin: 1em 0em;
-}
-
-h1 {
-  font-size: 2.5rem;
-  padding: .5em 1em;
-  text-align: center;
 }
 
 form {
@@ -124,15 +185,8 @@ form {
   background-size: 1.5rem;
 }
 
-#finished {
-  position: absolute;
-  bottom: 5px;
-  right: .5em;
-}
-
 button[type="submit"],
-input,
-select {
+input {
   padding: .5em .7em;
   border-radius: 5px;
   background-color: #ccc;
@@ -145,25 +199,20 @@ input {
   width: 90%;
 }
 
-select {
-  width: 99%;
-  margin: auto;
-  border: none;
+button:hover {
+  transition: all .2s ease-in;
+  transform: scale(1.1);
 }
+
+/*  ----------------------------------------------------------------
+    --------------------------- LIST -------------------------------
+    ----------------------------------------------------------------
+*/
 
 .done {
+  text-decoration: line-through;
   color: rgb(51, 141, 69);
   animation: fadeIn .5s ease-in once;
-}
-
-@keyframes fadeIn {
-  from {
-    color: rgb(0, 0, 0);
-  }
-
-  to {
-    color: rgb(51, 141, 69);
-  }
 }
 
 .done::before {
@@ -186,11 +235,6 @@ select {
   margin-left: .5rem;
   transition: all .2s ease-out;
   stroke: #e22323;
-}
-
-button:hover {
-  transition: all .2s ease-in;
-  transform: scale(1.1);
 }
 
 .delete:hover {
@@ -220,29 +264,12 @@ li span {
   max-width: 30ch;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-height: 30px;
+  max-height: 35px;
   white-space: nowrap;
-}
-
-footer {
-  text-align: center;
-  padding-bottom: 2em;
 }
 
 .latestEntry {
   animation: newListItem .5s ease-out once;
-}
-
-@keyframes newListItem {
-  0% {
-    opacity: 0;
-    transform: translateY(30%);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0%);
-  }
 }
 
 li:hover {
@@ -254,17 +281,4 @@ span {
   font-weight: 600;
   line-height: 2rem;
   font-size: 1rem;
-}
-
-main {
-  position: relative;
-  display: flex;
-  max-width: 500px;
-  flex-direction: column;
-  margin: 1rem auto;
-  background-color: rgba(204, 204, 204, 0.535);
-  padding: 1.5rem;
-  border-radius: .7rem;
-  border: 5px solid #fff;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2), inset 0px 0px 4px rgba(0, 0, 0, 0.1);
 }

@@ -1,24 +1,28 @@
+// variables
 const listEl = document.getElementById("ul-todo")
-const sortEl = document.getElementById("sort")
 const btnEl = document.getElementById("btn-todo")
 const msgEl = document.getElementById("message")
 let todoList = []
 
+// do these things when updating the list
 const update = function () {
   addToLocalStorage()
   populateList()
   finishedNumber()
 }
 
+// how many todo items are finished?
 const finishedNumber = function () {
   const num = todoList.filter(todo => todo.done === true)
   document.getElementById("finished").textContent = `${num.length} task${num.length === 1 ? "" : "s"} completed`
 }
 
+// using local storage as database for data persistance
 const addToLocalStorage = function () {
   localStorage.setItem("todos", JSON.stringify(todoList))
 }
 
+// getting items from local storage
 const getFromLocalStorage = function () {
   const lsToDos = localStorage.getItem("todos")
   if (lsToDos) {
@@ -28,22 +32,10 @@ const getFromLocalStorage = function () {
   }
 }
 
+// get from local storage from earlier sessions
 window.addEventListener("load", getFromLocalStorage)
 
-const sortList = function (event) {
-  const { value } = event.target
-  if (value === "oldest") {
-    todoList.sort((a, b) => a.time - b.time);
-    update()
-  } else if (value === "newest") {
-    todoList.sort((a, b) => b.time - a.time);
-    update()
-  } else if (value === "not-done") {
-    todoList.sort((a, b) => a.done - b.done);
-    update()
-  }
-}
-
+// submitting form = adding new todo
 const handleSubmit = function (event) {
   const text = event.target[0].value
   event.preventDefault()
@@ -61,9 +53,11 @@ const handleSubmit = function (event) {
   }
 }
 
+// when clicking item, mark complete or incomplete
 const markComplete = function (index) {
   todoList[index].done = !todoList[index].done
 
+  // just for fun
   document.getElementById("hourglass").classList.toggle("wiggle")
   setTimeout(() => {
     document.getElementById("hourglass").classList.toggle("wiggle")
@@ -73,18 +67,20 @@ const markComplete = function (index) {
   finishedNumber()
 }
 
+// delete todoList item from Array and update the list
 const deleteTodo = function (index) {
   todoList.splice(index, 1)
   update()
 }
 
+// add list to ul
 const populateList = function () {
-  listEl.innerHTML = ""
+  listEl.innerHTML = "" // reset old list
   let htmlString = ""
   todoList.forEach((todo, i) => {
     htmlString += `
     <li class="${i === (todoList.length - 1) ? "latestEntry" : null}">
-    <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${todo.todo}</span>
+    <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${i + 1}. ${todo.todo}</span>
     <button onclick="deleteTodo(${i})" class="delete"></button>
     </li>
     `
