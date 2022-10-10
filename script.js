@@ -80,8 +80,8 @@ const populateList = function () {
   todoList.forEach((todo, i) => {
     htmlString += `
     <li class="${i === (todoList.length - 1) ? "latestEntry" : null}">
-    <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${i + 1}. ${todo.todo}</span>
     <button onclick="deleteTodo(${i})" class="delete"></button>
+    <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${i + 1}. ${todo.todo}</span>
     </li>
     `
   })

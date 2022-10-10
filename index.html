@@ -23,13 +23,12 @@
     <h1>Do some ToDos</h1>
 
     <hr />
-
     <div id="finished"></div>
 
     <section>
       <form onsubmit="handleSubmit(event)">
         <input pattern="[a-öA-Ö0-9\s]+" type="text" placeholder="Add a new ToDo" required />
-        <button type="submit" id="btn-todo"> </button>
+        <button type="submit" id="btn-todo" aria-label="add">. </button>
       </form>
       <span id="message"></span>
     </section>
