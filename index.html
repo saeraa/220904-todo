@@ -4,7 +4,8 @@
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;900&family=DynaPuff:wght@600&display=swap"
+    rel="stylesheet">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
 
     <img src="hourglass.svg" alt="" id="hourglass" />
 
-    <h1>Do some ToDos</h1>
+    <h1>to-do-list</h1>
 
     <hr />
     <div id="finished"></div>
@@ -28,7 +29,7 @@
     <section>
       <form onsubmit="handleSubmit(event)">
         <input pattern="[a-öA-Ö0-9\s]+" type="text" placeholder="Add a new ToDo" required />
-        <button type="submit" id="btn-todo" aria-label="add">. </button>
+        <button type="submit" id="btn-todo" aria-label="add">+</button>
       </form>
       <span id="message"></span>
     </section>

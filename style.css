@@ -4,7 +4,9 @@
 }
 
 body {
-  font-family: "Source Sans Pro";
+  display: flex;
+  flex-direction: column;
+  font-family: 'Albert Sans', sans-serif;
   font-size: 16px;
   line-height: 150%;
   background-color: #3b3b3b;
@@ -13,6 +15,7 @@ body {
   overflow-x: hidden;
   background: rgb(109, 62, 62);
   background: linear-gradient(325deg, rgba(109, 62, 62, 1) 2%, rgb(38, 38, 38) 35%, rgba(25, 25, 25, 1) 97%);
+  min-height: 100vh;
 }
 
 ul {
@@ -38,7 +41,7 @@ li {
   margin: 5px;
   border: 2px solid rgba(0, 0, 0, 0.568);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.325);
-  min-height: 50px;
+  min-height: 30px;
   border-radius: 5px;
 }
 
@@ -48,10 +51,8 @@ hr {
   background-color: #522f2f91;
   border-radius: 10px;
   max-width: 95vw;
-
   margin: .5rem auto;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.499);
-
 }
 
 li button {
@@ -64,10 +65,17 @@ li button {
   right: -12px;
   border: 2px solid black;
   border-radius: 50%;
-  background: #4d2020;
-  background-image: url(trashcan2.svg);
+  background-color: #4d2020;
+  background-image: url(trashcan.svg);
   background-repeat: no-repeat;
   background-position: center center;
+  cursor: pointer;
+  transition: background-color .5s ease-in-out;
+}
+
+li button:hover {
+  transition: background-color .5s ease-in-out;
+  background-color: #682f2f;
 }
 
 .done {
@@ -94,22 +102,37 @@ form {
 form>input {
   padding: 1em 3em;
   font-size: 1rem;
-  background: rgb(74, 74, 74);
+  background: rgb(50, 50, 50);
   border: 2px solid black;
   border-radius: 5px;
   color: #e3e3e3;
+  margin-right: .7rem;
+  margin-left: .8rem;
+  transition: transform .4s ease-in;
+}
+
+form>input:hover {
+  /* transform: scale(1.1); */
+  transition: transform .4s ease-in;
 }
 
 form>button {
   font-size: 1rem;
   padding: 1em 2em;
   color: transparent;
-  background: rgb(74, 74, 74);
+  background: rgb(50, 50, 50);
   background-image: url(plus.svg);
   background-repeat: no-repeat;
   background-position: center center;
   border: 2px solid black;
   border-radius: 5px;
+  cursor: pointer;
+  transition: transform .4s ease-in;
+}
+
+form>button:hover {
+  /* transform: scale(1.1); */
+  transition: transform .4s ease-in;
 }
 
 :focus {
@@ -120,11 +143,19 @@ form>button {
   position: absolute;
   top: 5px;
   right: 10px;
+  color: #cacaca;
 }
 
 footer {
   text-align: center;
   padding: 2em 2em;
+  position: sticky;
+  bottom: 10px;
+  right: 20px;
+  margin-top: auto;
+  align-self: flex-end;
+  justify-self: flex-end;
+  backdrop-filter: blur(3px);
 }
 
 img {
@@ -138,4 +169,19 @@ h1 {
   font-size: 3rem;
   padding: 3rem 5rem 2rem;
   text-shadow: 0 0 10px #000;
+  color: #b8a47e;
+  font-family: 'DynaPuff', cursive;
+}
+
+section {
+  position: relative;
+}
+
+#message {
+  display: none;
+  position: absolute;
+  left: 30px;
+  bottom: -8px;
+  color: rgb(240, 76, 76);
+  z-index: +1;
 }

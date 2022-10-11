@@ -41,7 +41,7 @@ const handleSubmit = function (event) {
   event.preventDefault()
 
   if (text.length < 3) {
-    msgEl.style.display = "inline-block"
+    msgEl.style.display = "block"
     msgEl.textContent = "Your todo needs to be at least 3 characters long."
     return
   } else {
