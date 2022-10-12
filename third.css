@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: none;
+}
+
+body {
+  font-family: "Arial";
+  background: #EAF0F4;
+}
+
+h1 {
+  margin-bottom: 0;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px #234a62;
+  font-size: 20px;
+  content: "ToDo List";
+  font-family: "Arial";
+  width: 100%;
+  background: linear-gradient(to bottom, #6fa2bf, #4a82a6, #3c7598, rgb(89, 122, 150));
+  padding: 1em;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #295b82;
+  box-shadow: inset 2px 2px 2px #87bbda, inset -2px -2px 2px #7bb2d0, 2px 2px 5px rgb(185, 185, 185);
+  transform: scale(1.01);
+}
+
+hr {
+  display: none;
+}
+
+#finished {
+  position: absolute;
+  top: -25px;
+  right: 10px;
+  font-size: .8rem;
+}
+
+input {
+  position: absolute;
+  bottom: 5px;
+  padding: .7em .8em;
+  right: 7px;
+  border: 1px solid #ccc;
+  border: none;
+  border-radius: 4px;
+  width: 70%;
+  box-shadow: inset 0px 0px 3px #ccc;
+  z-index: +1;
+}
+
+input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+
+main {
+  margin: 3rem auto;
+  width: 350px;
+  position: relative;
+}
+
+section button {
+  display: none;
+}
+
+ul {
+  width: 100%;
+  background: #f5f6f7;
+  margin: 0;
+  margin-top: 1px;
+  padding: 0;
+  list-style-type: none;
+  box-shadow: 2px 2px 4px #ccc;
+}
+
+/*! COLOR FOR LINES #f6d1cc */
+
+li {
+  width: 100%;
+  padding: 1.3em 2em;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: .8rem;
+  font-weight: 800;
+  color: #2b5b78;
+  border-top: 1px solid rgb(220, 220, 220);
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  /* z-index: -1; */
+  position: relative;
+  cursor: pointer;
+}
+
+li::before {
+  height: 25px;
+  width: 25px;
+  background-color: #e4eaef;
+  content: " ";
+  z-index: +1;
+  display: inline-block;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  border-radius: 3px;
+  box-shadow: inset 2px 2px 4px #c5c9cd;
+}
+
+li:has(span.done)::before {
+  box-shadow: inset 2px 2px 4px #9cb19b;
+  background: #bad8b8 url(checkmark3.svg);
+  background-size: 13px;
+  background-repeat: no-repeat;
+  background-position: center;
+  /** color: #83b67e; CHECKMARK COLOR !!! */
+}
+
+span.done {
+  text-decoration: line-through;
+  color: rgb(172, 172, 172);
+}
+
+li span {
+  max-width: 75%;
+  display: inline-block;
+}
+
+li span::before {
+  height: 100%;
+  width: 1.5px;
+  border-left: 2px solid #f6d1cc;
+  border-right: 2px solid #f6d1cc;
+  position: absolute;
+  left: 45px;
+  top: 0;
+  z-index: +1;
+  content: " ";
+}
+
+li:first-of-type {
+  background: linear-gradient(to bottom, rgb(219, 219, 219) 1%, #f5f6f7 20%);
+}
+
+li:last-of-type {
+  padding-bottom: 60px;
+}
+
+li:last-of-type::after {
+  content: " ";
+  width: 97%;
+  height: 3px;
+  position: absolute;
+  bottom: -3px;
+  left: 5px;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 8px rgb(98, 98, 98);
+  z-index: -1;
+}
+
+button.delete {
+  position: absolute;
+  display: block;
+  right: 8px;
+  top: 16px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+button.delete::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 5px;
+  background-color: #f6d1cc;
+  display: block;
+  width: 5px;
+  height: 100%;
+  border-radius: 5px;
+  transform: rotate(45deg);
+}
+
+button.delete::before {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  background-color: #f6d1cc;
+  display: block;
+  width: 5px;
+  height: 100%;
+  border-radius: 5px;
+  transform: rotate(-45deg);
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1em;
+  color: #2b5b78;
+}
