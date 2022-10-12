@@ -1,3 +1,24 @@
+const one = document.querySelector("#one")
+const two = document.querySelector("#two")
+const three = document.querySelector("#three")
+const styles = document.querySelector("#styles")
+
+one.addEventListener("click", () => {
+  styles.href = "first.css";
+  document.querySelector("h1").textContent = "Do some ToDos"
+  update()
+})
+two.addEventListener("click", () => {
+  document.querySelector("h1").textContent = "to-do-list"
+  styles.href = "style.css";
+  update()
+})
+three.addEventListener("click", () => {
+  document.querySelector("h1").textContent = "ToDo List"
+  styles.href = "third.css";
+  update()
+})
+
 // variables
 const listEl = document.getElementById("ul-todo")
 const btnEl = document.getElementById("btn-todo")
@@ -77,13 +98,29 @@ const deleteTodo = function (index) {
 const populateList = function () {
   listEl.innerHTML = "" // reset old list
   let htmlString = ""
-  todoList.forEach((todo, i) => {
-    htmlString += `
-    <li class="${i === (todoList.length - 1) ? "latestEntry" : null}">
-    <button onclick="deleteTodo(${i})" class="delete"></button>
-    <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${i + 1}. ${todo.todo}</span>
-    </li>
-    `
-  })
+
+  const trueOrNot = styles.href.includes("third")
+
+  if (trueOrNot) {
+    console.log("hi")
+    todoList.forEach((todo, i) => {
+      htmlString += `
+      <li class="${i === (todoList.length - 1) ? "latestEntry" : null}">
+      <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${todo.todo}</span>
+      <button onclick="deleteTodo(${i})" class="delete"></button>
+      </li>
+      `
+    })
+  } else {
+    todoList.forEach((todo, i) => {
+      htmlString += `
+      <li class="${i === (todoList.length - 1) ? "latestEntry" : null}">
+      <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${i + 1}. ${todo.todo}</span>
+      <button onclick="deleteTodo(${i})" class="delete"></button>
+      </li>
+      `
+    })
+  }
+
   listEl.innerHTML = htmlString
 }

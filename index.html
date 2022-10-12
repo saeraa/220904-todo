@@ -9,13 +9,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link id="styles" rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="hourglass.svg">
   <script src="script.js" defer></script>
   <title>ToDo</title>
 </head>
 
 <body>
+  <header>
+    <button id="one">1</button>
+    <button id="two">2</button>
+    <button id="three">3</button>
+  </header>
 
   <main>
 
@@ -29,7 +34,7 @@
     <section>
       <form onsubmit="handleSubmit(event)">
         <input pattern="[a-öA-Ö0-9\s.,\" ]+" type="text" placeholder="Add a new ToDo" required />
-        <button type="submit" id="btn-todo" aria-label="add">+</button>
+        <button type="submit" id="btn-todo" aria-label="add">.</button>
       </form>
       <span id="message"></span>
     </section>
