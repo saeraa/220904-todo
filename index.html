@@ -20,6 +20,7 @@
     <button id="one">1</button>
     <button id="two">2</button>
     <button id="three">3</button>
+    <button id="four">4</button>
   </header>
 
   <main>
@@ -33,7 +34,7 @@
 
     <section>
       <form onsubmit="handleSubmit(event)">
-        <input pattern="[a-öA-Ö0-9\s.,\" ]+" type="text" placeholder="Add a new ToDo" required />
+        <input pattern="[a-öA-Ö0-9\s.,]+" type="text" placeholder="Add a new ToDo" required />
         <button type="submit" id="btn-todo" aria-label="add">.</button>
       </form>
       <span id="message"></span>

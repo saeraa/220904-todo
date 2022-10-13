@@ -1,6 +1,7 @@
 const one = document.querySelector("#one")
 const two = document.querySelector("#two")
 const three = document.querySelector("#three")
+const four = document.querySelector("#four")
 const styles = document.querySelector("#styles")
 
 one.addEventListener("click", () => {
@@ -18,6 +19,11 @@ three.addEventListener("click", () => {
   styles.href = "third.css";
   update()
 })
+four.addEventListener("click", () => {
+  document.querySelector("h1").textContent = "ToDo List"
+  styles.href = "fourth.css";
+  update()
+})
 
 // variables
 const listEl = document.getElementById("ul-todo")
@@ -27,6 +33,13 @@ let todoList = []
 
 // do these things when updating the list
 const update = function () {
+  console.log("update")
+  setTimeout(function () {
+    todoList = todoList.map(entry => {
+      return { ...entry, justAdded: false }
+    })
+  }, 2000)
+
   addToLocalStorage()
   populateList()
   finishedNumber()
@@ -66,7 +79,7 @@ const handleSubmit = function (event) {
     msgEl.textContent = "Your todo needs to be at least 3 characters long."
     return
   } else {
-    todoList.push({ todo: text, time: new Date().getTime(), done: false })
+    todoList.push({ todo: text, time: new Date().getTime(), done: false, justAdded: true })
     msgEl.textContent = ""
     msgEl.style.display = "none"
     event.target.reset()
@@ -105,7 +118,7 @@ const populateList = function () {
     console.log("hi")
     todoList.forEach((todo, i) => {
       htmlString += `
-      <li class="${i === (todoList.length - 1) ? "latestEntry" : null}">
+      <li class="${todo.justAdded ? "latestEntry" : null}">
       <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${todo.todo}</span>
       <button onclick="deleteTodo(${i})" class="delete"></button>
       </li>
@@ -114,7 +127,7 @@ const populateList = function () {
   } else {
     todoList.forEach((todo, i) => {
       htmlString += `
-      <li class="${i === (todoList.length - 1) ? "latestEntry" : null}">
+      <li class="${todo.justAdded ? "latestEntry" : null}">
       <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${i + 1}. ${todo.todo}</span>
       <button onclick="deleteTodo(${i})" class="delete"></button>
       </li>
