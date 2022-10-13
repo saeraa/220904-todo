@@ -111,7 +111,8 @@ li::before {
   box-shadow: inset 2px 2px 4px #c5c9cd;
 }
 
-li:has(span.done)::before {
+/* li:has(span.done)::before { */
+li.done::before {
   box-shadow: inset 2px 2px 4px #9cb19b;
   background: #bad8b8 url(checkmark3.svg);
   background-size: 13px;

@@ -105,7 +105,7 @@ const populateList = function () {
     console.log("hi")
     todoList.forEach((todo, i) => {
       htmlString += `
-      <li class="${i === (todoList.length - 1) ? "latestEntry" : null}">
+      <li class="${i === (todoList.length - 1) ? "latestEntry" : null} ${todo.done ? "done" : null}">
       <span onclick="markComplete(${i})" class="${todo.done ? "done" : null}">${todo.todo}</span>
       <button onclick="deleteTodo(${i})" class="delete"></button>
       </li>
